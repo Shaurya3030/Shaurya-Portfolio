@@ -51,10 +51,14 @@ const setCharacter = (
               }
             });
             resolve(gltf);
-            setCharTimeline(character, camera);
-            setAllTimeline();
-            character!.getObjectByName("footR")!.position.y = 3.36;
-            character!.getObjectByName("footL")!.position.y = 3.36;
+            if (character) {
+              setCharTimeline(character, camera);
+              setAllTimeline();
+              const footR = character.getObjectByName("footR");
+              const footL = character.getObjectByName("footL");
+              if (footR) footR.position.y = 3.36;
+              if (footL) footL.position.y = 3.36;
+            }
 
             // Monitor scale is handled by GsapScroll.ts animations
 
